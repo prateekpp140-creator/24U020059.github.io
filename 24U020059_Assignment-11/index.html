@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IIIT Bhopal - Excellence in Technology</title>
+  <meta name="description" content="Indian Institute of Information Technology Bhopal - Shaping tomorrow's technology leaders through cutting-edge research, world-class education, and industry-driven innovation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,400;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+</head>
+<body>
+<div id="toast" class="toast"></div>
+
+<!-- AUTH MODAL -->
+<div id="modal" class="mbk" onclick="closeOut(event)">
+  <div class="mbox glass">
+    <button class="mcl" onclick="closeModal()">&#10005;</button>
+    <h2 class="mttl">IIIT Bhopal Portal</h2>
+    <div class="tabs">
+      <button class="tbtn act" id="tl" onclick="swTab('login')">Login</button>
+      <button class="tbtn" id="tr" onclick="swTab('reg')">Register</button>
+    </div>
+    <div class="tpnl act" id="pl">
+      <form onsubmit="doLogin(event)">
+        <div class="fg2"><label class="flb">Email Address</label><input class="fin" id="le" type="email" placeholder="student@iiitbhopal.ac.in" autocomplete="email" required /></div>
+        <div class="fg2"><label class="flb">Password</label><input class="fin" id="lp" type="password" placeholder="Your password" autocomplete="current-password" required /></div>
+        <p id="lerr" class="aerr" style="display:none"></p>
+        <button type="submit" class="btn btn-p btn-fw" style="margin-top:.5rem" id="lbtn">Login</button>
+      </form>
+    </div>
+    <div class="tpnl" id="pr">
+      <form onsubmit="doReg(event)">
+        <div class="fg2"><label class="flb">Full Name</label><input class="fin" id="rn" type="text" placeholder="Your full name" autocomplete="name" required /></div>
+        <div class="fg2"><label class="flb">Email Address</label><input class="fin" id="re" type="email" placeholder="student@iiitbhopal.ac.in" autocomplete="email" required /></div>
+        <div class="fg2"><label class="flb">Password</label><input class="fin" id="rp" type="password" placeholder="Min. 6 characters" autocomplete="new-password" required /></div>
+        <div class="fg2"><label class="flb">Confirm Password</label><input class="fin" id="rc" type="password" placeholder="Repeat password" autocomplete="new-password" required /></div>
+        <p id="rerr" class="aerr" style="display:none"></p>
+        <button type="submit" class="btn btn-p btn-fw" style="margin-top:.5rem" id="rbtn">Create Account</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<header id="nav">
+  <nav class="wrap">
+    <div class="ni">
+      <button class="nl" onclick="go('home')" aria-label="Home">
+        <div class="nl-i">II</div>
+        <div class="nl-t"><div class="nl-n">IIIT Bhopal</div><div class="nl-s">Excellence in Technology</div></div>
+      </button>
+      <ul class="nav-links">
+        <li><a class="nav-a" href="#home" onclick="nc(event,'home')">Home</a></li>
+        <li><a class="nav-a" href="#about" onclick="nc(event,'about')">About</a></li>
+        <li><a class="nav-a" href="#programs" onclick="nc(event,'programs')">Programs</a></li>
+        <li><a class="nav-a" href="#research" onclick="nc(event,'research')">Research</a></li>
+        <li><a class="nav-a" href="#campus" onclick="nc(event,'campus')">Campus</a></li>
+        <li><a class="nav-a" href="#placements" onclick="nc(event,'placements')">Placements</a></li>
+        <li><a class="nav-a" href="#news" onclick="nc(event,'news')">News</a></li>
+        <li><a class="nav-a" href="#contact" onclick="nc(event,'contact')">Contact</a></li>
+      </ul>
+      <div class="nc" id="na" style="display:flex"><button class="btn btn-eo btn-sm" onclick="openModal('login')">Login</button><button class="btn btn-p btn-sm" onclick="openModal('reg')">Register</button></div>
+      <div class="nc" id="nu" style="display:none"><div class="nup glass"><div class="nav-av" id="navi">U</div><span class="nav-un" id="navt">User</span></div><button class="btn btn-do" onclick="doLogout()">&#x2715; Logout</button></div>
+      <button class="ntg" onclick="togMM()" id="ntgb" aria-label="Toggle menu"><i data-lucide="menu" style="width:22px;height:22px"></i></button>
+    </div>
+    <div id="mm" class="glass">
+      <ul>
+        <li><a class="mna" href="#home" onclick="mnc(event,'home')">Home</a></li>
+        <li><a class="mna" href="#about" onclick="mnc(event,'about')">About</a></li>
+        <li><a class="mna" href="#programs" onclick="mnc(event,'programs')">Programs</a></li>
+        <li><a class="mna" href="#research" onclick="mnc(event,'research')">Research</a></li>
+        <li><a class="mna" href="#campus" onclick="mnc(event,'campus')">Campus</a></li>
+        <li><a class="mna" href="#placements" onclick="mnc(event,'placements')">Placements</a></li>
+        <li><a class="mna" href="#news" onclick="mnc(event,'news')">News</a></li>
+        <li><a class="mna" href="#contact" onclick="mnc(event,'contact')">Contact</a></li>
+      </ul>
+      <div class="ma" id="mma"><button class="btn btn-eo btn-fw" onclick="openModal('login');togMM()">Login</button><button class="btn btn-p btn-fw" onclick="openModal('reg');togMM()">Register</button></div>
+      <div class="ma" id="mmu" style="display:none"><div class="mur"><div style="display:flex;align-items:center;gap:.5rem"><div class="nav-av" id="mavi">U</div><span style="font-size:.875rem;color:#fff" id="mavt">User</span></div><button class="btn btn-do" onclick="doLogout()">&#x2715; Logout</button></div></div>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hbg"></div><div class="hov"></div><div class="hgr"></div>
+  <div class="hc">
+    <div class="hp glass"><div class="hd"></div><span class="hpt">Premier Technical Institute</span></div>
+    <h1 class="hh"><span class="hl1">Indian Institute of</span><span class="hl2 gem">Information Technology</span><span class="hl3">Bhopal</span></h1>
+    <p class="hde">Shaping tomorrow&rsquo;s technology leaders through cutting-edge research, world-class education, and industry-driven innovation.</p>
+    <div class="hbs"><button class="btn btn-p" onclick="go('programs')">Explore Programs</button><button class="btn btn-o" onclick="go('about')">Learn More</button></div>
+  </div>
+  <button class="hsc" onclick="go('stats')" aria-label="Scroll down"><i data-lucide="chevron-down" style="width:28px;height:28px"></i></button>
+</section>
+
+<!-- STATS -->
+<section id="stats" class="fi"><div class="wrap"><div class="sg">
+  <div class="sc glass hover"><div class="si">&#127963;</div><div class="sv gld">Est.&nbsp;2017</div><div class="sl">Established</div></div>
+  <div class="sc glass hover"><div class="si">&#127891;</div><div class="sv gld">1500+</div><div class="sl">Students Enrolled</div></div>
+  <div class="sc glass hover"><div class="si">&#127979;</div><div class="sv gld">80+</div><div class="sl">Expert Faculty</div></div>
+  <div class="sc glass hover"><div class="si">&#128218;</div><div class="sv gld">6</div><div class="sl">Academic Programs</div></div>
+</div></div></section>
+
+<!-- ABOUT -->
+<section id="about" class="fi"><div class="wrap"><div class="ag">
+  <div>
+    <span class="bdg bdg-g" style="margin-bottom:1rem">About the Institute</span>
+    <h2 class="ah">Building <span class="gem">Visionary</span> Technologists</h2>
+    <p class="at">Established under the IIIT (PPP) Act 2017, IIIT Bhopal is a premier technical institute dedicated to nurturing innovation and excellence. Situated in the heart of Madhya Pradesh, we shape future-ready engineers and researchers.</p>
+    <p class="at">Our mission is to provide world-class education, foster groundbreaking research, and build bridges between academia and industry. We are committed to creating a vibrant intellectual community where ideas thrive.</p>
+    <ul class="pl">
+      <li class="pi"><span class="pck">&#10003;</span><span class="ptx">Excellence in Technical Education</span></li>
+      <li class="pi"><span class="pck">&#10003;</span><span class="ptx">Cutting-Edge Research &amp; Innovation</span></li>
+      <li class="pi"><span class="pck">&#10003;</span><span class="ptx">Industry-Academia Collaboration</span></li>
+      <li class="pi"><span class="pck">&#10003;</span><span class="ptx">Inclusive &amp; Diverse Campus</span></li>
+    </ul>
+  </div>
+  <div class="aiw"><div class="aig"></div><img class="ai" src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=800&q=80" alt="IIIT Bhopal" loading="lazy" /><div class="abb glass"><div class="abl">Founded</div><div class="abv gld">2017</div></div></div>
+</div></div></section>
+
+<!-- PROGRAMS -->
+<section id="programs" class="fi"><div class="wrap">
+  <div class="sh"><span class="bdg bdg-g" style="margin-bottom:1rem">Academics</span><h2 class="shg">Academic <span class="gem">Programs</span></h2><p class="shd">Discover our diverse range of programs designed to transform passionate minds into technology leaders.</p></div>
+  <div class="pg">
+    <div class="pc glass hover"><div class="pir"><div class="pio">&#128187;</div><span class="bdg bdg-o">4 Years</span></div><h3 class="pt">B.Tech Computer Science &amp; Engineering</h3><p class="pd">A rigorous program blending algorithms, AI, systems, and software engineering to create industry-ready innovators.</p><div class="pm"><div class="pmi"><span class="pmic">&#128101;</span>Seats: 60</div><div class="pmi"><span class="pmic">&#128336;</span>Duration: 4 Years</div><div class="pmi"><span class="pmic">&#128218;</span>JEE Mains, 10+2 PCM</div></div><span class="plm">Learn More <span class="pla">&#8594;</span></span></div>
+    <div class="pc glass hover"><div class="pir"><div class="pio">&#128225;</div><span class="bdg bdg-o">4 Years</span></div><h3 class="pt">B.Tech Electronics &amp; Communication</h3><p class="pd">Explore embedded systems, signal processing, VLSI design, and cutting-edge communication technologies.</p><div class="pm"><div class="pmi"><span class="pmic">&#128101;</span>Seats: 60</div><div class="pmi"><span class="pmic">&#128336;</span>Duration: 4 Years</div><div class="pmi"><span class="pmic">&#128218;</span>JEE Mains, 10+2 PCM</div></div><span class="plm">Learn More <span class="pla">&#8594;</span></span></div>
+    <div class="pc glass hover"><div class="pir"><div class="pio">&#128300;</div><span class="bdg bdg-o">2 Years</span></div><h3 class="pt">M.Tech Computer Science</h3><p class="pd">Advanced specializations in Machine Learning, Distributed Systems, Cybersecurity, and Data Science.</p><div class="pm"><div class="pmi"><span class="pmic">&#128101;</span>Seats: 24</div><div class="pmi"><span class="pmic">&#128336;</span>Duration: 2 Years</div><div class="pmi"><span class="pmic">&#128218;</span>B.Tech / BE with GATE</div></div><span class="plm">Learn More <span class="pla">&#8594;</span></span></div>
+    <div class="pc glass hover"><div class="pir"><div class="pio">&#127979;</div><span class="bdg bdg-o">3-5 Years</span></div><h3 class="pt">PhD Research Program</h3><p class="pd">Contribute to frontier research with world-class faculty mentorship and access to state-of-the-art facilities.</p><div class="pm"><div class="pmi"><span class="pmic">&#128101;</span>Seats: 20</div><div class="pmi"><span class="pmic">&#128336;</span>Duration: 3-5 Years</div><div class="pmi"><span class="pmic">&#128218;</span>M.Tech with GATE/NET</div></div><span class="plm">Learn More <span class="pla">&#8594;</span></span></div>
+  </div>
+</div></section>
+
+<!-- RESEARCH -->
+<section id="research" class="fi">
+  <div class="rbg"></div><div class="rov"></div>
+  <div class="wrap" style="position:relative">
+    <div class="sh"><span class="bdg bdg-o" style="margin-bottom:1rem">Innovation Hub</span><h2 class="shg">Research &amp; <span class="gld">Innovation</span></h2><p class="shd">Where ideas meet rigor. Our research centers push the boundaries of what&rsquo;s possible in computing, engineering, and technology.</p></div>
+    <div class="rg">
+      <div class="rc glass hover"><div class="ri" style="background:rgba(74,222,128,.14);border:1px solid rgba(74,222,128,.28)">&#129302;</div><h3 class="rt">Artificial Intelligence &amp; Machine Learning</h3><p class="rd">Advancing the frontiers of intelligent systems, deep learning architectures, and autonomous decision-making.</p><div class="rs"><span class="rst" style="color:var(--em)">&#128101; 12 Faculty</span><span class="rst" style="color:var(--gold)">&#128218; 85 Publications</span></div></div>
+      <div class="rc glass hover"><div class="ri" style="background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.28)">&#128274;</div><h3 class="rt">Cybersecurity &amp; Blockchain</h3><p class="rd">Developing robust cryptographic protocols, secure distributed systems, and privacy-preserving technologies.</p><div class="rs"><span class="rst" style="color:var(--em)">&#128101; 8 Faculty</span><span class="rst" style="color:var(--gold)">&#128218; 52 Publications</span></div></div>
+      <div class="rc glass hover"><div class="ri" style="background:rgba(59,130,246,.14);border:1px solid rgba(59,130,246,.28)">&#128225;</div><h3 class="rt">IoT &amp; Embedded Systems</h3><p class="rd">Pioneering connected device architectures, real-time processing, and smart infrastructure solutions.</p><div class="rs"><span class="rst" style="color:var(--em)">&#128101; 9 Faculty</span><span class="rst" style="color:var(--gold)">&#128218; 63 Publications</span></div></div>
+      <div class="rc glass hover"><div class="ri" style="background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.28)">&#128202;</div><h3 class="rt">Data Science &amp; Analytics</h3><p class="rd">Transforming raw data into actionable insights through advanced statistical modeling and big data technologies.</p><div class="rs"><span class="rst" style="color:var(--em)">&#128101; 10 Faculty</span><span class="rst" style="color:var(--gold)">&#128218; 74 Publications</span></div></div>
+      <div class="rc glass hover"><div class="ri" style="background:rgba(234,179,8,.14);border:1px solid rgba(234,179,8,.28)">&#9889;</div><h3 class="rt">VLSI Design &amp; Photonics</h3><p class="rd">Engineering next-generation integrated circuits, nano-scale devices, and optical communication systems.</p><div class="rs"><span class="rst" style="color:var(--em)">&#128101; 7 Faculty</span><span class="rst" style="color:var(--gold)">&#128218; 41 Publications</span></div></div>
+      <div class="rc glass hover"><div class="ri" style="background:rgba(236,72,153,.14);border:1px solid rgba(236,72,153,.28)">&#128187;</div><h3 class="rt">Human-Computer Interaction</h3><p class="rd">Creating intuitive, accessible, and adaptive interfaces that bridge the gap between humans and technology.</p><div class="rs"><span class="rst" style="color:var(--em)">&#128101; 6 Faculty</span><span class="rst" style="color:var(--gold)">&#128218; 38 Publications</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPUS -->
+<section id="campus" class="fi"><div class="wrap">
+  <div class="sh"><span class="bdg bdg-g" style="margin-bottom:1rem">Campus Life</span><h2 class="shg">Life at <span class="gem">IIIT Bhopal</span></h2><p class="shd">Beyond academics &mdash; a vibrant campus where every student finds their passion, community, and purpose.</p></div>
+  <div class="cg">
+    <div class="cc hover"><img class="ci" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80" alt="Labs" loading="lazy" /><div class="ccp"><div class="cct">State-of-the-Art Labs</div><div class="ccd">Cutting-edge computing labs with the latest hardware &amp; software</div></div></div>
+    <div class="cc hover"><img class="ci" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Library" loading="lazy" /><div class="ccp"><div class="cct">Digital Library</div><div class="ccd">A vast repository of knowledge &mdash; physical and digital resources</div></div></div>
+    <div class="cc hover"><img class="ci" src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=800&q=80" alt="Sports" loading="lazy" /><div class="ccp"><div class="cct">Sports &amp; Recreation</div><div class="ccd">World-class sports facilities for a balanced student life</div></div></div>
+  </div>
+  <h3 class="act">Student Clubs &amp; Activities</h3>
+  <div class="acg">
+    <div class="acp glass-light">&#127917; Drama &amp; Arts</div><div class="acp glass-light">&#127928; Music Society</div><div class="acp glass-light">&#9823; Chess Club</div><div class="acp glass-light">&#128640; Astronomy Club</div><div class="acp glass-light">&#128161; E-Cell</div><div class="acp glass-light">&#129309; NSS Chapter</div><div class="acp glass-light">&#127942; Coding Club</div><div class="acp glass-light">&#128248; Photography</div>
+  </div>
+</div></section>
+
+<!-- PLACEMENTS -->
+<section id="placements" class="fi"><div class="wrap">
+  <div class="sh"><span class="bdg bdg-g" style="margin-bottom:1rem">Career Success</span><h2 class="shg">Placement <span class="gld">Achievements</span></h2><p class="shd">Our graduates are powering innovation at the world&rsquo;s top technology companies and startups.</p></div>
+  <div class="plg">
+    <div class="plc glass hover"><div class="plci">&#128188;</div><div class="plcv gld">8 LPA</div><div class="plcl">Avg Package</div></div>
+    <div class="plc glass hover"><div class="plci">&#127942;</div><div class="plcv gld">42 LPA</div><div class="plcl">Top Package</div></div>
+    <div class="plc glass hover"><div class="plci">&#127970;</div><div class="plcv gld">65+</div><div class="plcl">Companies</div></div>
+    <div class="plc glass hover"><div class="plci">&#127891;</div><div class="plcv gld">180+</div><div class="plcl">Students Placed</div></div>
+  </div>
+  <h3 class="rect">Our <span class="gem">Recruiters</span></h3>
+  <div class="recg"><div class="recp glass-light">Google</div><div class="recp glass-light">Microsoft</div><div class="recp glass-light">Amazon</div><div class="recp glass-light">Flipkart</div><div class="recp glass-light">TCS</div><div class="recp glass-light">Infosys</div><div class="recp glass-light">Wipro</div><div class="recp glass-light">Adobe</div><div class="recp glass-light">Oracle</div><div class="recp glass-light">IBM</div></div>
+  <p class="pln">* Placement data for the batch of 2024</p>
+</div></section>
+
+<!-- FACULTY -->
+<section id="faculty" class="fi"><div class="wrap">
+  <div class="sh"><span class="bdg bdg-g" style="margin-bottom:1rem">Our Team</span><h2 class="shg">Faculty <span class="gem">Highlights</span></h2><p class="shd">Guided by experts who are not just teachers, but active contributors to global technological advancement.</p></div>
+  <div class="fg">
+    <div class="fc glass hover"><div class="fh"><div class="fav">AS</div><div><div class="fn gld">Dr. Ananya Sharma</div><div class="fd">Professor &amp; HOD</div></div></div><span class="fdp bdg-n bdg">Computer Science</span><p class="fi2">Machine Learning, Deep Learning, Computer Vision</p><a href="mailto:ananya.sharma@iiitbhopal.ac.in" class="fem">&#9993; ananya.sharma@iiitbhopal.ac.in</a></div>
+    <div class="fc glass hover"><div class="fh"><div class="fav">RK</div><div><div class="fn gld">Dr. Rajesh Kumar</div><div class="fd">Associate Professor</div></div></div><span class="fdp bdg-n bdg">Computer Science</span><p class="fi2">Cryptography, Cybersecurity, Blockchain</p><a href="mailto:rajesh.kumar@iiitbhopal.ac.in" class="fem">&#9993; rajesh.kumar@iiitbhopal.ac.in</a></div>
+    <div class="fc glass hover"><div class="fh"><div class="fav">PV</div><div><div class="fn gld">Dr. Priya Verma</div><div class="fd">Assistant Professor</div></div></div><span class="fdp bdg-n bdg">Electronics &amp; Communication</span><p class="fi2">VLSI Design, Signal Processing, IoT</p><a href="mailto:priya.verma@iiitbhopal.ac.in" class="fem">&#9993; priya.verma@iiitbhopal.ac.in</a></div>
+    <div class="fc glass hover"><div class="fh"><div class="fav">SP</div><div><div class="fn gld">Dr. Suresh Patel</div><div class="fd">Professor</div></div></div><span class="fdp bdg-n bdg">Mathematics</span><p class="fi2">Computational Mathematics, Data Analytics, Optimization</p><a href="mailto:suresh.patel@iiitbhopal.ac.in" class="fem">&#9993; suresh.patel@iiitbhopal.ac.in</a></div>
+    <div class="fc glass hover"><div class="fh"><div class="fav">MJ</div><div><div class="fn gld">Dr. Meena Joshi</div><div class="fd">Associate Professor</div></div></div><span class="fdp bdg-n bdg">Computer Science</span><p class="fi2">Natural Language Processing, AI Ethics, HCI</p><a href="mailto:meena.joshi@iiitbhopal.ac.in" class="fem">&#9993; meena.joshi@iiitbhopal.ac.in</a></div>
+    <div class="fc glass hover"><div class="fh"><div class="fav">VS</div><div><div class="fn gld">Dr. Vikram Singh</div><div class="fd">Assistant Professor</div></div></div><span class="fdp bdg-n bdg">Electronics &amp; Communication</span><p class="fi2">Photonics, Embedded Systems, Robotics</p><a href="mailto:vikram.singh@iiitbhopal.ac.in" class="fem">&#9993; vikram.singh@iiitbhopal.ac.in</a></div>
+  </div>
+</div></section>
+
+<!-- NEWS -->
+<section id="news" class="fi"><div class="wrap">
+  <div class="sh"><span class="bdg bdg-g" style="margin-bottom:1rem">What&rsquo;s Happening</span><h2 class="shg">News &amp; <span class="gem">Events</span></h2><p class="shd">Stay updated with the latest from IIIT Bhopal &mdash; breakthroughs, events, and milestones that define our story.</p></div>
+  <div class="ntc">
+    <div>
+      <div class="nct"><span class="ncd" style="background:var(--em)"></span>Latest News</div>
+      <div class="ns">
+        <div class="nca glass hover"><div class="nch"><span class="ncat" style="background:rgba(251,191,36,.14);color:#fbbf24;border-color:rgba(251,191,36,.32)">&#127991; Achievement</span><span class="ndate">&#128197; 27 Mar 2026</span></div><h3 class="ntit">IIIT Bhopal Ranks Among Top NIT-Equivalent Institutes 2024</h3><p class="ndsc">The NIRF has recognized IIIT Bhopal in the Engineering category, reflecting our commitment to quality education.</p></div>
+        <div class="nca glass hover"><div class="nch"><span class="ncat" style="background:rgba(74,222,128,.14);color:#86efac;border-color:rgba(74,222,128,.32)">&#127991; Research</span><span class="ndate">&#128197; 20 Mar 2026</span></div><h3 class="ntit">Research Grant Awarded for AI-Driven Healthcare Solutions</h3><p class="ndsc">The DST awarded a &#8377;2.5 Crore research grant to the AI &amp; ML group for developing diagnostic AI models.</p></div>
+        <div class="nca glass hover"><div class="nch"><span class="ncat" style="background:rgba(249,115,22,.14);color:#fb923c;border-color:rgba(249,115,22,.32)">&#127991; Collaboration</span><span class="ndate">&#128197; 13 Mar 2026</span></div><h3 class="ntit">International Collaboration with Technical University Munich</h3><p class="ndsc">IIIT Bhopal signs MoU with TU Munich for student exchange, joint research, and collaborative workshops.</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="nct"><span class="ncd" style="background:var(--gold)"></span>Upcoming Events</div>
+      <div class="ns">
+        <div class="nca glass hover"><div class="nch"><span class="ncat" style="background:rgba(139,92,246,.14);color:#c4b5fd;border-color:rgba(139,92,246,.32)">&#127991; Event</span><span class="ndate">&#128197; 3 May 2026</span></div><h3 class="ntit">TechFest 2025 &mdash; Annual Technical Festival Announced</h3><p class="ndsc">30+ competitive events, hackathons, workshops, and industry talks across 3 action-packed days.</p></div>
+        <div class="nca glass hover"><div class="nch"><span class="ncat" style="background:rgba(59,130,246,.14);color:#93c5fd;border-color:rgba(59,130,246,.32)">&#127991; Workshop</span><span class="ndate">&#128197; 17 Apr 2026</span></div><h3 class="ntit">Industry Connect Workshop: Cloud Computing &amp; DevOps</h3><p class="ndsc">Immersive workshop led by AWS and Google Cloud engineers covering pipelines, containerization, and CI/CD.</p></div>
+        <div class="nca glass hover"><div class="nch"><span class="ncat" style="background:rgba(139,92,246,.14);color:#c4b5fd;border-color:rgba(139,92,246,.32)">&#127991; Event</span><span class="ndate">&#128197; 10 Apr 2026</span></div><h3 class="ntit">Alumni Talk: Entrepreneurship in DeepTech</h3><p class="ndsc">Distinguished alumni share insights on building deep-tech startups and creating technological impact.</p></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CONTACT -->
+<section id="contact" class="fi"><div class="wrap">
+  <div class="sh"><span class="bdg bdg-g" style="margin-bottom:1rem">Get In Touch</span><h2 class="shg">Contact <span class="gem">Us</span></h2><p class="shd">Have questions about admissions, research, or campus life? We&rsquo;d love to hear from you.</p></div>
+  <div class="ctg">
+    <div>
+      <div class="ctc glass"><div class="ctct">Reach Us Directly</div><div class="ctcl"><div class="ctci"><div class="ctico ico-g">&#128205;</div><div><div class="ctdl">Address</div><div class="ctdt">NH-12, Opp. Shri Ram Temple,<br>Atal Bihari Vajpayee University Campus,<br>Bhopal &ndash; 462045, Madhya Pradesh</div></div></div><div class="ctci"><div class="ctico ico-o">&#9993;</div><div><div class="ctdl">Email</div><a href="mailto:info@iiitbhopal.ac.in" class="ctda">info@iiitbhopal.ac.in</a></div></div><div class="ctci"><div class="ctico ico-g">&#128222;</div><div><div class="ctdl">Phone</div><a href="tel:+917552494022" class="ctda">+91-755-2494022</a></div></div></div></div>
+      <div class="mpb"><div class="mpbt"><div style="font-size:1.75rem;color:var(--em)">&#128205;</div><p>Bhopal, Madhya Pradesh</p><span>PIN: 462045</span></div></div>
+    </div>
+    <div>
+      <div class="fmc glass" id="fcw">
+        <div class="fmt">Send a Message</div>
+        <form id="cform" onsubmit="doContact(event)">
+          <div class="frw"><div class="fg2" style="margin-bottom:0"><label class="flb">Full Name <span class="req">*</span></label><input class="fin" id="cn" type="text" placeholder="Your full name" required /></div><div class="fg2" style="margin-bottom:0"><label class="flb">Email <span class="req">*</span></label><input class="fin" id="ce" type="email" placeholder="you@example.com" required /></div></div>
+          <div class="fg2"><label class="flb">Subject</label><input class="fin" id="cs" type="text" placeholder="What's on your mind?" /></div>
+          <div class="fg2"><label class="flb">Message <span class="req">*</span></label><textarea class="fta" id="cm" placeholder="Write your message here..." rows="4" required></textarea></div>
+          <button type="submit" class="btn btn-p btn-fw" id="csub">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ftg">
+      <div>
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem"><div style="width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#4ade80,#16a34a);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:#0d1117">II</div><div><div class="fbn">IIIT Bhopal</div><div class="fbs">Excellence in Technology</div></div></div>
+        <p class="fbd">Indian Institute of Information Technology, Bhopal &mdash; shaping the next generation of technology leaders through innovation and excellence.</p>
+        <p class="fba">NH-12, Opp. Shri Ram Temple, ABV-IIITM Campus,<br>Bhopal &ndash; 462045, MP, India</p>
+      </div>
+      <div>
+        <div class="fct">Quick Links</div>
+        <a href="#home" class="fla" onclick="go('home');return false">Home</a>
+        <a href="#about" class="fla" onclick="go('about');return false">About</a>
+        <a href="#programs" class="fla" onclick="go('programs');return false">Programs</a>
+        <a href="#research" class="fla" onclick="go('research');return false">Research</a>
+        <a href="#placements" class="fla" onclick="go('placements');return false">Placements</a>
+      </div>
+      <div>
+        <div class="fct">Academics</div>
+        <a href="#" class="fla">Admissions</a><a href="#" class="fla">Academic Calendar</a><a href="#" class="fla">Examination Portal</a><a href="#" class="fla">Library Resources</a><a href="#" class="fla">Research Publications</a>
+      </div>
+      <div>
+        <div class="fct">Connect</div>
+        <a href="#" class="fla">&#128279; LinkedIn</a><a href="#" class="fla">&#128038; Twitter / X</a><a href="#" class="fla">&#9654; YouTube</a><a href="#" class="fla">&#128248; Instagram</a>
+        <div class="fhd glass"><div class="fhdt">Admissions Helpdesk</div><div class="fhdd">+91-755-2494022<br>admissions@iiitbhopal.ac.in</div></div>
+      </div>
+    </div>
+    <!-- MADE BY BANNER -->
+    <div class="mbb glass">
+      <div class="mbg"></div>
+      <div class="mbi">&#127979;</div>
+      <div class="mbt">
+        <div class="mbn"><span class="mu">Made by </span><span class="mg">Ashish</span><span class="md">|</span><span class="mu">Scholar No: </span><span class="mg">24U020059</span></div>
+        <div class="mbs">IIIT Bhopal &ndash; Web Technologies &nbsp;&middot;&nbsp; Assignment-11</div>
+      </div>
+    </div>
+    <div class="ftb">
+      <p class="ftc">&copy; <span id="yr"></span> IIIT Bhopal. All rights reserved.</p>
+      <p class="ftbl">Built with &#10084; for academic submission</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
