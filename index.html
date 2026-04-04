@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICADS 2025 — IIIT Bhopal</title>
+  <meta name="description"
+    content="International Conference on Artificial Intelligence and Data Science, IIIT Bhopal, September 15–17, 2025" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background: #F2F2F2;
+      color: #111
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
+
+    button {
+      cursor: pointer;
+      font-family: inherit
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    :root {
+      --maroon: #5A0B12;
+      --maroon-dark: #3a0608;
+      --maroon-mid: #7a1520;
+      --gold: #BFA14A;
+      --gold-light: #D4B96A;
+      --beige: #C8B27A;
+      --page-bg: #F2F2F2;
+      --text-light: #6b7280;
+      --border: #e5e7eb;
+      --green: #16a34a
+    }
+
+    .ticker-wrap {
+      overflow: hidden;
+      padding: 6px 0;
+      font-size: .85rem;
+      font-weight: 500;
+      color: #fff;
+      background: var(--maroon-mid)
+    }
+
+    .ticker-inner {
+      display: inline-flex;
+      white-space: nowrap;
+      animation: ticker 30s linear infinite
+    }
+
+    .ticker-inner:hover {
+      animation-play-state: paused
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    .marquee-wrap {
+      overflow: hidden;
+      padding: 12px 0;
+      background: linear-gradient(135deg, var(--maroon), var(--maroon-mid))
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 40s linear infinite
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    .mq-item {
+      flex-shrink: 0;
+      width: 220px;
+      height: 154px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      margin-right: 12px
+    }
+
+    .mq-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .mq-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, .72));
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 600;
+      padding: 6px 10px
+    }
+
+    .hero-wrap {
+      position: relative;
+      overflow: hidden;
+      height: 65vh;
+      min-height: 340px
+    }
+
+    .icads-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s ease
+    }
+
+    .icads-slide.active {
+      opacity: 1
+    }
+
+    .icads-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 18, 55, .54)
+    }
+
+    .slide-text {
+      position: absolute;
+      bottom: 18%;
+      left: 7%;
+      max-width: 580px;
+      color: #fff
+    }
+
+    .slide-tag {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--maroon-dark);
+      margin-bottom: 10px
+    }
+
+    .slide-title {
+      font-size: clamp(1.5rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 7px
+    }
+
+    .slide-sub {
+      font-size: clamp(.88rem, 2vw, 1rem);
+      opacity: .9
+    }
+
+    .slide-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 33, 80, .7);
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      z-index: 10;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .slide-btn-prev {
+      left: 1rem
+    }
+
+    .slide-btn-next {
+      right: 1rem
+    }
+
+    .slide-dots {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      z-index: 10
+    }
+
+    .slide-dot {
+      height: 10px;
+      width: 10px;
+      border-radius: 999px;
+      background: var(--beige);
+      border: none;
+      transition: width .3s, background .3s;
+      cursor: pointer;
+      flex-shrink: 0
+    }
+
+    .slide-dot.active {
+      width: 28px;
+      background: var(--gold)
+    }
+
+    .inst-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #fff;
+      border-bottom: 3px solid var(--maroon)
+    }
+
+    .inst-logo {
+      width: 60px;
+      height: 60px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--maroon);
+      border: 3px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: .7rem;
+      line-height: 1.25;
+      text-align: center
+    }
+
+    .inst-info {
+      flex: 1;
+      text-align: center
+    }
+
+    .inst-hindi {
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--maroon)
+    }
+
+    .inst-name {
+      font-size: .9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--maroon)
+    }
+
+    .inst-sub {
+      font-size: .68rem;
+      color: var(--text-light)
+    }
+
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--maroon);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .25)
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      flex: 1;
+      justify-content: center
+    }
+
+    .icads-nav-link {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 600;
+      padding: 12px 8px;
+      transition: color .2s, border-color .2s;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: 'Poppins', sans-serif
+    }
+
+    .icads-nav-link:hover {
+      color: var(--gold)
+    }
+
+    .icads-nav-link.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold)
+    }
+
+    .nav-auth {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 8px;
+      flex-shrink: 0
+    }
+
+    .nav-username {
+      color: var(--gold);
+      font-size: .82rem;
+      font-weight: 600;
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .btn-logout {
+      padding: 5px 14px;
+      border-radius: 6px;
+      border: 2px solid #e87070;
+      background: transparent;
+      color: #e87070;
+      font-size: .78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .15s;
+      font-family: 'Poppins', sans-serif
+    }
+
+    .btn-logout:hover {
+      background: #e87070;
+      color: #fff
+    }
+
+    .btn-register {
+      background: var(--gold);
+      color: var(--maroon-dark);
+      font-weight: 700;
+      font-size: .82rem;
+      padding: 7px 18px;
+      border-radius: 8px;
+      border: none;
+      transition: opacity .2s;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      white-space: nowrap
+    }
+
+    .btn-register:hover {
+      opacity: .88
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.3rem;
+      padding: 12px
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--maroon)
+    }
+
+    .mobile-menu.open {
+      display: flex
+    }
+
+    .mobile-menu .icads-nav-link {
+      padding: 10px 20px;
+      text-align: left;
+      width: 100%;
+      border-bottom: none;
+      border-left: 2px solid transparent
+    }
+
+    .mobile-menu .icads-nav-link.active {
+      border-left-color: var(--gold);
+      background: var(--maroon-mid)
+    }
+
+    .mobile-auth {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 12px 16px
+    }
+
+    @media(max-width:768px) {
+
+      .nav-links,
+      .nav-auth {
+        display: none
+      }
+
+      .hamburger {
+        display: block
+      }
+    }
+
+    .stats-strip {
+      background: var(--maroon);
+      padding: 40px 16px
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--gold)
+    }
+
+    .stat-label {
+      font-size: .75rem;
+      margin-top: 4px;
+      color: var(--gold-light)
+    }
+
+    .section {
+      padding: 64px 16px
+    }
+
+    .section.light {
+      background: var(--page-bg)
+    }
+
+    .section.white {
+      background: #fff
+    }
+
+    .section-label {
+      display: block;
+      text-align: center;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px
+    }
+
+    .section-heading {
+      font-size: 1.9rem;
+      font-weight: 800;
+      text-align: center;
+      color: var(--maroon);
+      margin-bottom: 40px
+    }
+
+    .section-heading::after {
+      content: '';
+      display: block;
+      width: 56px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 99px;
+      margin: 10px auto 0
+    }
+
+    .mw1200 {
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .mw900 {
+      max-width: 900px;
+      margin: 0 auto
+    }
+
+    .mw600 {
+      max-width: 600px;
+      margin: 0 auto
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: none
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .04)
+    }
+
+    .card-light {
+      background: var(--page-bg);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 20px
+    }
+
+    .grid-auto {
+      display: grid;
+      gap: 20px
+    }
+
+    .grid-200 {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+    }
+
+    .grid-280 {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
+    }
+
+    .grid-220 {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))
+    }
+
+    .committee-card {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      text-align: center;
+      padding: 20px
+    }
+
+    .committee-photo {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 10px;
+      border: 3px solid var(--maroon)
+    }
+
+    .committee-name {
+      font-weight: 700;
+      font-size: .84rem;
+      color: var(--maroon)
+    }
+
+    .committee-role {
+      display: inline-block;
+      font-size: .68rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      margin: 6px 0 4px;
+      font-weight: 600;
+      background: var(--maroon);
+      color: #fff
+    }
+
+    .committee-inst {
+      font-size: .7rem;
+      color: var(--text-light)
+    }
+
+    .date-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 10px;
+      background: var(--page-bg);
+      border-left: 4px solid var(--maroon);
+      margin-bottom: 12px
+    }
+
+    .date-date {
+      font-weight: 700;
+      font-size: .84rem;
+      color: var(--maroon)
+    }
+
+    .date-event {
+      font-size: .83rem;
+      color: #4b5563
+    }
+
+    .speaker-card {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start
+    }
+
+    .speaker-photo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 3px solid var(--gold)
+    }
+
+    .speaker-name {
+      font-weight: 700;
+      font-size: .88rem;
+      color: var(--maroon)
+    }
+
+    .speaker-inst {
+      font-size: .7rem;
+      color: var(--text-light);
+      margin-bottom: 6px
+    }
+
+    .speaker-talk {
+      font-size: .83rem;
+      font-style: italic;
+      color: #4b5563
+    }
+
+    .workshop-card {
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--page-bg);
+      padding: 20px
+    }
+
+    .workshop-title {
+      font-weight: 700;
+      font-size: .94rem;
+      color: var(--maroon);
+      margin-bottom: 8px
+    }
+
+    .workshop-desc {
+      font-size: .83rem;
+      color: #4b5563;
+      margin-bottom: 12px
+    }
+
+    .badge-m {
+      display: inline-block;
+      font-size: .7rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-weight: 600;
+      background: var(--maroon);
+      color: #fff;
+      margin-right: 6px
+    }
+
+    .badge-g {
+      display: inline-block;
+      font-size: .7rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-weight: 600;
+      background: var(--gold);
+      color: var(--maroon-dark)
+    }
+
+    .special-card {
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--page-bg);
+      padding: 20px
+    }
+
+    .special-icon {
+      font-size: 2rem;
+      margin-bottom: 10px
+    }
+
+    .special-title {
+      font-weight: 700;
+      font-size: .92rem;
+      color: var(--maroon);
+      margin-bottom: 6px
+    }
+
+    .special-desc {
+      font-size: .83rem;
+      color: #4b5563
+    }
+
+    .reg-table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border)
+    }
+
+    .reg-table {
+      width: 100%;
+      border-collapse: collapse
+    }
+
+    .reg-table th {
+      background: var(--maroon);
+      color: #fff;
+      padding: 14px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      text-align: center
+    }
+
+    .reg-table th:first-child {
+      text-align: left
+    }
+
+    .reg-table td {
+      padding: 14px 16px;
+      font-size: .85rem;
+      border-bottom: 1px solid var(--border);
+      text-align: center
+    }
+
+    .reg-table td:first-child {
+      font-weight: 600;
+      color: var(--maroon);
+      text-align: left
+    }
+
+    .reg-table tr:nth-child(even) td {
+      background: #f9f9f9
+    }
+
+    .reg-green {
+      font-weight: 700;
+      color: var(--green)
+    }
+
+    .tier-card {
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      background: var(--page-bg);
+      transition: box-shadow .2s
+    }
+
+    .tier-icon {
+      font-size: 2.5rem;
+      margin-bottom: 6px
+    }
+
+    .tier-name {
+      font-size: 1.1rem;
+      font-weight: 800
+    }
+
+    .tier-price {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--maroon);
+      margin: 4px 0 12px
+    }
+
+    .tier-benefit {
+      display: flex;
+      gap: 8px;
+      font-size: .8rem;
+      text-align: left;
+      color: #4b5563;
+      margin-bottom: 6px
+    }
+
+    .sponsors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 10px
+    }
+
+    .sponsor-item {
+      padding: 8px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: .75rem;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      color: var(--maroon);
+      background: var(--page-bg)
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid var(--border);
+      margin-bottom: 10px
+    }
+
+    .contact-icon {
+      font-size: 1.25rem;
+      flex-shrink: 0
+    }
+
+    .contact-label {
+      font-weight: 700;
+      font-size: .82rem;
+      color: var(--maroon)
+    }
+
+    .contact-value {
+      font-size: .82rem;
+      color: #4b5563
+    }
+
+    .btn-maroon {
+      display: inline-block;
+      background: var(--maroon);
+      color: #fff;
+      font-weight: 700;
+      font-size: .88rem;
+      padding: 11px 28px;
+      border-radius: 8px;
+      border: none;
+      transition: opacity .2s;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif
+    }
+
+    .btn-maroon:hover {
+      opacity: .9
+    }
+
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--maroon-dark);
+      font-weight: 700;
+      font-size: .88rem;
+      padding: 11px 32px;
+      border-radius: 999px;
+      border: none;
+      transition: opacity .2s;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif
+    }
+
+    .btn-gold:hover {
+      opacity: .9
+    }
+
+    .w-full {
+      width: 100%
+    }
+
+    .text-center {
+      text-align: center
+    }
+
+    .mt-6 {
+      margin-top: 24px
+    }
+
+    .mb-4 {
+      margin-bottom: 16px
+    }
+
+    .chair-flex {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: flex-start
+    }
+
+    .chair-photo-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0
+    }
+
+    .chair-photo {
+      width: 136px;
+      height: 136px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--gold);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .12)
+    }
+
+    .chair-name {
+      font-weight: 700;
+      font-size: .88rem;
+      color: var(--maroon);
+      margin-top: 12px;
+      text-align: center
+    }
+
+    .chair-role {
+      font-size: .68rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-top: 4px;
+      background: var(--page-bg);
+      color: var(--maroon)
+    }
+
+    .chair-quote {
+      font-size: .88rem;
+      line-height: 1.75;
+      color: #4b5563;
+      margin-bottom: 12px
+    }
+
+    .chair-sig {
+      font-style: italic;
+      font-size: .82rem;
+      font-weight: 600;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 12px;
+      margin-top: 8px;
+      color: var(--maroon)
+    }
+
+    @media(min-width:768px) {
+      .chair-flex {
+        flex-direction: row
+      }
+    }
+
+    .footer {
+      background: var(--maroon-dark);
+      color: #fff;
+      padding: 48px 16px 24px
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      max-width: 1000px;
+      margin: 0 auto 32px
+    }
+
+    .footer-heading {
+      font-weight: 700;
+      font-size: .94rem;
+      color: var(--gold);
+      margin-bottom: 12px
+    }
+
+    .footer-link {
+      display: block;
+      font-size: .82rem;
+      opacity: .75;
+      margin-bottom: 5px;
+      transition: opacity .2s;
+      color: #fff;
+      cursor: pointer
+    }
+
+    .footer-link:hover {
+      opacity: 1
+    }
+
+    .footer-text {
+      font-size: .82rem;
+      opacity: .75
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      padding-top: 16px;
+      text-align: center;
+      font-size: .78rem;
+      opacity: .6;
+      max-width: 1000px;
+      margin: 0 auto
+    }
+
+    .social-pill {
+      font-size: .72rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: var(--maroon);
+      color: #fff;
+      display: inline-block;
+      margin: 3px;
+      transition: opacity .2s
+    }
+
+    .social-pill:hover {
+      opacity: .8
+    }
+
+    #btn-scroll-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      background: var(--maroon);
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
+      transition: opacity .2s, transform .2s;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px)
+    }
+
+    #btn-scroll-top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0)
+    }
+
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center
+    }
+
+    .modal-backdrop.open {
+      display: flex
+    }
+
+    .modal-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 32px;
+      width: 100%;
+      max-width: 440px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .3)
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--page-bg);
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light)
+    }
+
+    .modal-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--maroon);
+      margin-bottom: 4px;
+      text-align: center
+    }
+
+    .modal-subtitle {
+      font-size: .82rem;
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 20px
+    }
+
+    .modal-tabs {
+      display: flex;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 20px
+    }
+
+    .modal-tab {
+      flex: 1;
+      background: none;
+      border: none;
+      padding: 10px;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-light);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: all .15s;
+      font-family: 'Poppins', sans-serif
+    }
+
+    .modal-tab.active {
+      color: var(--maroon);
+      border-bottom-color: var(--maroon)
+    }
+
+    .form-label {
+      display: block;
+      font-size: .82rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 6px
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-size: .9rem;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 16px;
+      outline: none;
+      transition: border-color .15s;
+      background: #fff
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      border-color: var(--maroon)
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 11px;
+      border-radius: 8px;
+      border: none;
+      background: var(--maroon);
+      color: #fff;
+      font-size: .95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: opacity .15s
+    }
+
+    .btn-submit:hover {
+      opacity: .9
+    }
+
+    .form-error {
+      color: #dc2626;
+      font-size: .82rem;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      background: #fef2f2;
+      border-radius: 6px;
+      border: 1px solid #fecaca
+    }
+
+    .form-switch {
+      text-align: center;
+      margin-top: 16px;
+      font-size: .82rem;
+      color: var(--text-light)
+    }
+
+    .form-switch-link {
+      background: none;
+      border: none;
+      color: var(--maroon);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: .82rem;
+      font-family: 'Poppins', sans-serif
+    }
+
+    .topics-item {
+      display: flex;
+      gap: 8px;
+      font-size: .83rem;
+      color: #4b5563;
+      margin-bottom: 6px
+    }
+
+    .topics-bullet {
+      color: var(--gold)
+    }
+
+    .submission-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="inst-header">
+    <div class="inst-logo">IIIT<br>BPL</div>
+    <div class="inst-info">
+      <p class="inst-hindi">भारतीय सूचना प्रौद्योगिकी संस्थान, भोपाल</p>
+      <h1 class="inst-name">Indian Institute of Information Technology, Bhopal</h1>
+      <p class="inst-sub">(An Institute of National Importance)</p>
+    </div>
+    <div id="inst-badge" style="display:none;text-align:right;flex-shrink:0">
+      <p style="font-weight:800;font-size:1.1rem;line-height:1;color:var(--maroon)">ICADS</p>
+      <p style="font-weight:800;font-size:1.1rem;line-height:1;color:var(--gold)">2025</p>
+    </div>
+  </header>
+
+  <div class="ticker-wrap">
+    <div class="ticker-inner">
+      <span style="padding-right:2rem">📢 Admissions 2025 Open&nbsp;|&nbsp; 📄 Research Proposals Invited&nbsp;|&nbsp;
+        🎓 PhD Applications Closing Soon&nbsp;|&nbsp; 📅 ICADS 2025 — International Conference on AI &amp; Data
+        Science&nbsp;|&nbsp; 🏆 Paper Submission Deadline: 30 May 2025&nbsp;|&nbsp; </span>
+      <span style="padding-right:2rem">📢 Admissions 2025 Open&nbsp;|&nbsp; 📄 Research Proposals Invited&nbsp;|&nbsp;
+        🎓 PhD Applications Closing Soon&nbsp;|&nbsp; 📅 ICADS 2025 — International Conference on AI &amp; Data
+        Science&nbsp;|&nbsp; 🏆 Paper Submission Deadline: 30 May 2025&nbsp;|&nbsp; </span>
+    </div>
+  </div>
+
+  <nav class="sticky-nav">
+    <div class="nav-inner">
+      <div class="nav-links">
+        <button class="icads-nav-link active" onclick="navTo('home')">Home</button>
+        <button class="icads-nav-link" onclick="navTo('committee')">Committee</button>
+        <button class="icads-nav-link" onclick="navTo('important-dates')">Important Dates</button>
+        <button class="icads-nav-link" onclick="navTo('speakers')">Speakers</button>
+        <button class="icads-nav-link" onclick="navTo('workshop')">Workshop</button>
+        <button class="icads-nav-link" onclick="navTo('submission')">Submission</button>
+        <button class="icads-nav-link" onclick="navTo('special-session')">Special Session</button>
+        <button class="icads-nav-link" onclick="navTo('registration')">Registration</button>
+        <button class="icads-nav-link" onclick="navTo('sponsorship')">Sponsorship</button>
+        <button class="icads-nav-link" onclick="navTo('contact')">Contact</button>
+      </div>
+      <div class="nav-auth" id="nav-auth">
+        <button class="btn-register" onclick="openAuth('register')">Register Now</button>
+      </div>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <button class="icads-nav-link" onclick="navTo('home');closeMenu()">Home</button>
+      <button class="icads-nav-link" onclick="navTo('committee');closeMenu()">Committee</button>
+      <button class="icads-nav-link" onclick="navTo('important-dates');closeMenu()">Important Dates</button>
+      <button class="icads-nav-link" onclick="navTo('speakers');closeMenu()">Speakers</button>
+      <button class="icads-nav-link" onclick="navTo('workshop');closeMenu()">Workshop</button>
+      <button class="icads-nav-link" onclick="navTo('submission');closeMenu()">Submission</button>
+      <button class="icads-nav-link" onclick="navTo('special-session');closeMenu()">Special Session</button>
+      <button class="icads-nav-link" onclick="navTo('registration');closeMenu()">Registration</button>
+      <button class="icads-nav-link" onclick="navTo('sponsorship');closeMenu()">Sponsorship</button>
+      <button class="icads-nav-link" onclick="navTo('contact');closeMenu()">Contact</button>
+      <div class="mobile-auth" id="mobile-auth">
+        <button class="btn-gold" onclick="openAuth('register');closeMenu()">Register Now</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marquee-track"></div>
+  </div>
+
+  <div class="hero-wrap" id="home">
+    <div id="slides-container"></div>
+    <button class="slide-btn slide-btn-prev" onclick="slideGo(-1)">&#10094;</button>
+    <button class="slide-btn slide-btn-next" onclick="slideGo(1)">&#10095;</button>
+    <div class="slide-dots" id="slide-dots"></div>
+  </div>
+
+  <div class="stats-strip" id="stats-strip">
+    <div class="stats-grid">
+      <div class="text-center">
+        <div class="stat-number" data-target="800" data-suffix="+">0+</div>
+        <div class="stat-label">Students Enrolled</div>
+      </div>
+      <div class="text-center">
+        <div class="stat-number" data-target="120" data-suffix="+">0+</div>
+        <div class="stat-label">Research Publications</div>
+      </div>
+      <div class="text-center">
+        <div class="stat-number" data-target="50" data-suffix="+">0+</div>
+        <div class="stat-label">Faculty Members</div>
+      </div>
+      <div class="text-center">
+        <div class="stat-number" data-target="95" data-suffix="%">0%</div>
+        <div class="stat-label">Placement Rate</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section white">
+    <div class="mw900 reveal">
+      <span class="section-label">Leadership</span>
+      <h2 class="section-heading">Message from the Conference Chair</h2>
+      <div class="chair-flex">
+        <div class="chair-photo-col">
+          <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Dr. Ashutosh Kumar Singh"
+            class="chair-photo" />
+          <p class="chair-name">Dr. Ashutosh Kumar Singh</p>
+          <span class="chair-role">Conference Chair</span>
+          <p style="font-size:.7rem;color:var(--text-light);margin-top:4px">IIIT Bhopal</p>
+        </div>
+        <div style="flex:1">
+          <p class="chair-quote">It gives me immense pleasure to welcome you to the International Conference on
+            Artificial Intelligence and Data Science (ICADS 2025), hosted at the Indian Institute of Information
+            Technology, Bhopal. This conference serves as a premier platform for researchers, academicians, and industry
+            professionals to share cutting-edge advances in AI, machine learning, and data-driven technologies.</p>
+          <p class="chair-quote">Our commitment to excellence in research and innovation drives us to bring together
+            brilliant minds from across the globe. I invite you to participate actively in the workshops, paper
+            presentations, and keynote sessions that will spark new collaborations and inspire future breakthroughs.</p>
+          <p class="chair-sig">— Dr. Ashutosh Kumar Singh, Conference Chair, ICADS 2025</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light" id="committee">
+    <div class="mw1200 reveal">
+      <span class="section-label">Organization</span>
+      <h2 class="section-heading">Conference Committee</h2>
+      <div class="grid-auto grid-200" id="committee-grid"></div>
+    </div>
+  </section>
+
+  <section class="section white" id="important-dates">
+    <div class="mw600 reveal">
+      <span class="section-label">Timeline</span>
+      <h2 class="section-heading">Important Dates</h2>
+      <div id="dates-list"></div>
+    </div>
+  </section>
+
+  <section class="section light" id="speakers">
+    <div class="mw1200 reveal">
+      <span class="section-label">Invited Talks</span>
+      <h2 class="section-heading">Keynote Speakers</h2>
+      <div class="grid-auto grid-280" id="speakers-grid"></div>
+    </div>
+  </section>
+
+  <section class="section white" id="workshop">
+    <div class="mw1200 reveal">
+      <span class="section-label">Pre-Conference</span>
+      <h2 class="section-heading">Workshops</h2>
+      <div class="grid-auto grid-280" id="workshops-grid"></div>
+    </div>
+  </section>
+
+  <section class="section light" id="submission">
+    <div class="mw1200 reveal">
+      <span class="section-label">Guidelines</span>
+      <h2 class="section-heading">Paper Submission</h2>
+      <div class="submission-grid">
+        <div class="card">
+          <h3 style="font-weight:700;font-size:.94rem;color:var(--maroon);margin-bottom:12px">Topics of Interest</h3>
+          <div id="topics-list"></div>
+        </div>
+        <div>
+          <div class="card mb-4">
+            <h3 style="font-weight:700;font-size:.88rem;color:var(--maroon);margin-bottom:10px">Formatting Requirements
+            </h3>
+            <p style="font-size:.82rem;color:#4b5563;margin-bottom:6px">• IEEE double-column format</p>
+            <p style="font-size:.82rem;color:#4b5563;margin-bottom:6px">• 6–8 pages (including references)</p>
+            <p style="font-size:.82rem;color:#4b5563;margin-bottom:6px">• PDF format only</p>
+            <p style="font-size:.82rem;color:#4b5563;margin-bottom:6px">• Blind review — no author information</p>
+          </div>
+          <div class="card mb-4">
+            <h3 style="font-weight:700;font-size:.88rem;color:var(--maroon);margin-bottom:10px">Submission Steps</h3>
+            <p style="font-size:.82rem;color:#4b5563;margin-bottom:6px">1. Register on EasyChair portal</p>
+            <p style="font-size:.82rem;color:#4b5563;margin-bottom:6px">2. Prepare paper in IEEE format</p>
+            <p style="font-size:.82rem;color:#4b5563;margin-bottom:6px">3. Submit PDF via EasyChair</p>
+            <p style="font-size:.82rem;color:#4b5563;margin-bottom:6px">4. Await review notification</p>
+          </div>
+          <button class="btn-maroon w-full" onclick="alert('EasyChair portal link coming soon!')">🚀 Submit Paper via
+            EasyChair</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section white" id="special-session">
+    <div class="mw1200 reveal">
+      <span class="section-label">Tracks</span>
+      <h2 class="section-heading">Special Sessions</h2>
+      <div class="grid-auto grid-280" id="specials-grid"></div>
+    </div>
+  </section>
+
+  <section class="section light" id="registration">
+    <div class="mw900 reveal">
+      <span class="section-label">Fees</span>
+      <h2 class="section-heading">Registration</h2>
+      <div class="reg-table-wrap">
+        <table class="reg-table">
+          <thead>
+            <tr>
+              <th style="text-align:left">Category</th>
+              <th>Early Bird<br><small style="opacity:.75">(by 31 Jul)</small></th>
+              <th>Regular</th>
+              <th>Student</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Academic Author</td>
+              <td class="reg-green">₹5,000</td>
+              <td>₹6,500</td>
+              <td>₹3,500</td>
+            </tr>
+            <tr>
+              <td>Industry Professional</td>
+              <td class="reg-green">₹8,000</td>
+              <td>₹10,000</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>International Author</td>
+              <td class="reg-green">$200</td>
+              <td>$250</td>
+              <td>$120</td>
+            </tr>
+            <tr>
+              <td>Attendee Only</td>
+              <td class="reg-green">₹2,000</td>
+              <td>₹3,000</td>
+              <td>₹1,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center mt-6">
+        <button class="btn-gold" onclick="openAuth('register')">Register Now</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section white" id="sponsorship">
+    <div class="mw1200 reveal">
+      <span class="section-label">Partnership</span>
+      <h2 class="section-heading">Sponsorship Opportunities</h2>
+      <div class="grid-auto grid-220 mb-4" id="tiers-grid" style="margin-bottom:40px"></div>
+      <h3 style="font-size:1rem;font-weight:700;text-align:center;color:var(--maroon);margin-bottom:16px">Current
+        Sponsors &amp; Partners</h3>
+      <div class="sponsors-grid" id="sponsors-grid"></div>
+    </div>
+  </section>
+
+  <section class="section light" id="contact">
+    <div class="mw900 reveal">
+      <span class="section-label">Get in Touch</span>
+      <h2 class="section-heading">Contact Us</h2>
+      <div class="contact-grid">
+        <div id="contact-info"></div>
+        <div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.3!2d77.4039!3d23.2156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDEyJzU2LjEiTiA3N8KwMjQnMTQuMCJF!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            width="100%" height="280" style="border:0;border-radius:10px;border:2px solid var(--border)" allowfullscreen
+            loading="lazy" title="IIIT Bhopal Location"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-heading">ICADS 2025</p>
+        <p class="footer-text">International Conference on Artificial Intelligence and Data Science</p>
+        <p class="footer-text" style="margin-top:8px">IIIT Bhopal, India<br>September 15–17, 2025</p>
+      </div>
+      <div>
+        <p class="footer-heading">Quick Links</p>
+        <a class="footer-link" onclick="navTo('committee')">Committee</a>
+        <a class="footer-link" onclick="navTo('important-dates')">Important Dates</a>
+        <a class="footer-link" onclick="navTo('speakers')">Speakers</a>
+        <a class="footer-link" onclick="navTo('submission')">Paper Submission</a>
+        <a class="footer-link" onclick="navTo('registration')">Registration</a>
+      </div>
+      <div>
+        <p class="footer-heading">Contact</p>
+        <p class="footer-text">IIIT Bhopal, MANIT Campus<br>Bhopal, MP — 462003, India</p>
+        <p class="footer-text" style="margin-top:8px">✉ info@iiitbhopal.ac.in</p>
+        <p class="footer-text">📞 0755-2900140</p>
+      </div>
+      <div>
+        <p class="footer-heading">Follow Us</p>
+        <a href="#" class="social-pill">Twitter</a>
+        <a href="#" class="social-pill">LinkedIn</a>
+        <a href="#" class="social-pill">Facebook</a>
+        <a href="#" class="social-pill">YouTube</a>
+        <a href="#" class="social-pill">ResearchGate</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 ICADS — Indian Institute of Information Technology, Bhopal. All rights reserved.
+    </div>
+  </footer>
+
+  <button id="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">↑</button>
+
+  <div class="modal-backdrop" id="auth-modal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeAuth()">✕</button>
+      <div class="modal-title">ICADS 2025</div>
+      <div class="modal-subtitle">Indian Institute of Information Technology, Bhopal</div>
+      <div class="modal-tabs">
+        <button class="modal-tab" id="tab-login" onclick="switchTab('login')">Login</button>
+        <button class="modal-tab active" id="tab-register" onclick="switchTab('register')">Register</button>
+      </div>
+      <form id="login-form" style="display:none" onsubmit="handleLogin(event)">
+        <label class="form-label">Email</label><input type="email" class="form-input" id="login-email" required
+          placeholder="your@email.com" />
+        <label class="form-label">Password</label><input type="password" class="form-input" id="login-password" required
+          placeholder="Your password" />
+        <div class="form-error" id="login-error" style="display:none"></div>
+        <button type="submit" class="btn-submit">Login</button>
+        <div class="form-switch">No account? <button type="button" class="form-switch-link"
+            onclick="switchTab('register')">Register here</button></div>
+      </form>
+      <form id="register-form" onsubmit="handleRegister(event)">
+        <label class="form-label">Full Name</label><input type="text" class="form-input" id="reg-name" required
+          placeholder="Dr. / Prof. / Mr. / Ms. Your Name" />
+        <label class="form-label">Email</label><input type="email" class="form-input" id="reg-email" required
+          placeholder="your@email.com" />
+        <label class="form-label">Institution / Organization</label><input type="text" class="form-input" id="reg-inst"
+          required placeholder="University / Company name" />
+        <label class="form-label">Role</label>
+        <select class="form-select" id="reg-role">
+          <option>Author</option>
+          <option>Reviewer</option>
+          <option>Attendee</option>
+          <option>Organizer</option>
+        </select>
+        <label class="form-label">Password</label><input type="password" class="form-input" id="reg-password" required
+          placeholder="Choose a strong password" />
+        <label class="form-label">Confirm Password</label><input type="password" class="form-input" id="reg-confirm"
+          required placeholder="Repeat your password" />
+        <div class="form-error" id="reg-error" style="display:none"></div>
+        <button type="submit" class="btn-submit">Register</button>
+        <div class="form-switch">Have an account? <button type="button" class="form-switch-link"
+            onclick="switchTab('login')">Login here</button></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const MQ = [{ url: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80', label: 'Admissions Open 2025' }, { url: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80', label: 'Convocation Ceremony 2025' }, { url: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80', label: 'Academic Excellence' }, { url: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=800&q=80', label: 'Institute of National Importance' }, { url: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80', label: 'Campus Events' }, { url: 'https://images.unsplash.com/photo-1532094349884-543559059340?auto=format&fit=crop&w=800&q=80', label: 'Advanced Laboratories' }];
+    const SLIDES = [{ url: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80', tag: 'ICADS 2025', title: 'International Conference on AI & Data Science', sub: 'IIIT Bhopal, India · September 15–17, 2025' }, { url: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1600&q=80', tag: 'Call for Papers', title: 'Submit Your Research Now', sub: 'AI, ML, Data Science, NLP, Computer Vision and more' }, { url: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1600&q=80', tag: 'Campus', title: 'State-of-the-Art IIIT Bhopal Campus', sub: 'An Institute of National Importance — MANIT Campus, Bhopal' }, { url: 'https://images.unsplash.com/photo-1532094349884-543559059340?auto=format&fit=crop&w=1600&q=80', tag: 'Research', title: 'Advanced Research Facilities', sub: 'World-class laboratories driving innovation' }, { url: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80', tag: 'Student Life', title: 'Vibrant Campus Culture', sub: 'Clubs, hackathons, cultural fests and international events' }, { url: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80', tag: 'Placements', title: 'Excellent Placement Record', sub: 'Top recruiters: Amazon, Microsoft, Adobe, NVIDIA & more' }];
+    const COMMITTEE = [{ name: 'Dr. Ashutosh K. Singh', role: 'General Chair', inst: 'IIIT Bhopal', photo: 'https://randomuser.me/api/portraits/men/75.jpg' }, { name: 'Dr. Priya Sharma', role: 'Program Chair', inst: 'IIT Delhi', photo: 'https://randomuser.me/api/portraits/women/44.jpg' }, { name: 'Dr. Rahul Verma', role: 'Technical Chair', inst: 'IIT Bombay', photo: 'https://randomuser.me/api/portraits/men/32.jpg' }, { name: 'Dr. Sunita Patel', role: 'Publicity Chair', inst: 'NIT Bhopal', photo: 'https://randomuser.me/api/portraits/women/68.jpg' }, { name: 'Dr. Amit Gupta', role: 'Finance Chair', inst: 'IIIT Bhopal', photo: 'https://randomuser.me/api/portraits/men/54.jpg' }, { name: 'Dr. Neha Joshi', role: 'Workshop Chair', inst: 'IIT Indore', photo: 'https://randomuser.me/api/portraits/women/29.jpg' }];
+    const DATES = [{ date: '15 March 2025', event: 'Paper Submission Portal Opens', icon: '📋' }, { date: '30 May 2025', event: 'Paper Submission Deadline', icon: '⚡' }, { date: '20 June 2025', event: 'Notification of Acceptance', icon: '📧' }, { date: '10 July 2025', event: 'Camera-Ready Paper Deadline', icon: '📄' }, { date: '31 July 2025', event: 'Early-Bird Registration Deadline', icon: '🏷️' }, { date: '1 August 2025', event: 'Registration Deadline', icon: '✅' }, { date: '15–17 September 2025', event: 'Conference Dates', icon: '🎓' }];
+    const SPEAKERS = [{ name: 'Prof. Andrew Ng', inst: 'Stanford University', talk: 'The Future of AI in Education and Research', photo: 'https://randomuser.me/api/portraits/men/10.jpg' }, { name: 'Dr. Fei-Fei Li', inst: 'Google Cloud AI', talk: 'Human-Centered AI and the Path Forward', photo: 'https://randomuser.me/api/portraits/women/10.jpg' }, { name: 'Prof. Yoshua Bengio', inst: 'Université de Montréal', talk: 'Deep Learning: Past, Present and Future', photo: 'https://randomuser.me/api/portraits/men/22.jpg' }, { name: 'Dr. Sanjeev Arora', inst: 'Princeton University', talk: 'Theoretical Foundations of Modern ML', photo: 'https://randomuser.me/api/portraits/men/36.jpg' }];
+    const WORKSHOPS = [{ title: 'Deep Learning with PyTorch', desc: 'Hands-on workshop covering CNN, RNN, Transformers and practical model deployment.', date: '13 Sept 2025', dur: 'Full Day' }, { title: 'NLP & Large Language Models', desc: 'Explore BERT, GPT, fine-tuning techniques and responsible LLM deployment.', date: '13 Sept 2025', dur: 'Full Day' }, { title: 'Explainable AI (XAI)', desc: 'LIME, SHAP, GradCAM and other interpretability frameworks.', date: '14 Sept 2025', dur: 'Half Day AM' }, { title: 'Edge AI & IoT Applications', desc: 'Deploy AI on resource-constrained devices using TensorFlow Lite & Raspberry Pi.', date: '15 Sept 2025', dur: 'Full Day' }];
+    const TOPICS = ['Machine Learning & Deep Learning', 'Natural Language Processing', 'Computer Vision', 'Reinforcement Learning', 'Federated & Privacy-preserving AI', 'AI in Healthcare', 'Knowledge Graphs & Reasoning', 'Explainable AI (XAI)', 'Edge Computing & IoT', 'Data Mining & Big Data Analytics'];
+    const SPECIALS = [{ icon: '🧠', title: 'AI in Healthcare & Biomedical Systems', desc: 'Diagnosis, drug discovery, patient monitoring and clinical decision support.' }, { icon: '🌍', title: 'AI for Climate & Sustainability', desc: 'Environmental monitoring, climate modelling, and smart energy management.' }, { icon: '🔒', title: 'Cybersecurity & Adversarial AI', desc: 'Adversarial attacks, intrusion detection, and privacy-preserving ML.' }, { icon: '🏙️', title: 'Smart Cities & Urban Computing', desc: 'Traffic optimisation, intelligent transportation and urban planning with AI.' }];
+    const TIERS = [{ tier: 'Gold', price: '₹5,00,000', color: '#BFA14A', benefits: ['Logo on all materials', 'Exhibition booth', '5 complimentary registrations', 'Keynote sponsorship slot'] }, { tier: 'Silver', price: '₹3,00,000', color: '#A0A0A0', benefits: ['Logo on website & proceedings', 'Exhibition booth', '3 complimentary registrations'] }, { tier: 'Bronze', price: '₹1,50,000', color: '#C8956C', benefits: ['Logo on website', '1 complimentary registration', 'Acknowledgment in programme'] }];
+    const SPONSORS = ['Amazon', 'Microsoft', 'NVIDIA', 'TCS', 'Adobe', 'Qualcomm', 'Flipkart', 'Atlassian', 'Infosys', 'Wipro', 'Google', 'IBM', 'Deloitte', 'Accenture'];
+    const CONTACTS = [{ icon: '📍', label: 'Address', value: 'Room No TB-201, NTB, MANIT Campus, Bhopal, MP — 462003' }, { icon: '📞', label: 'Phone', value: '0755-2900140' }, { icon: '✉️', label: 'Email', value: 'info@iiitbhopal.ac.in' }, { icon: '🌐', label: 'Website', value: 'www.iiitbhopal.ac.in' }];
+
+    // build
+    document.getElementById('marquee-track').innerHTML = [...MQ, ...MQ].map(m => `<div class="mq-item"><img src="${m.url}" alt="${m.label}" loading="lazy"/><div class="mq-label">${m.label}</div></div>`).join('');
+    let cur = 0, timer = null;
+    function buildSlides() { const c = document.getElementById('slides-container'), d = document.getElementById('slide-dots'); c.innerHTML = SLIDES.map((s, i) => `<div class="icads-slide ${i === 0 ? 'active' : ''}"><img src="${s.url}" alt="${s.title}" loading="${i === 0 ? 'eager' : 'lazy'}"/><div class="slide-overlay"></div><div class="slide-text"><span class="slide-tag">${s.tag}</span><h2 class="slide-title">${s.title}</h2><p class="slide-sub">${s.sub}</p></div></div>`).join(''); d.innerHTML = SLIDES.map((_, i) => `<button class="slide-dot ${i === 0 ? 'active' : ''}" onclick="slideTo(${i})"></button>`).join(''); startTimer(); }
+    function slideTo(n) { const s = document.querySelectorAll('.icads-slide'), d = document.querySelectorAll('.slide-dot'); s[cur].classList.remove('active'); d[cur].classList.remove('active'); cur = ((n % SLIDES.length) + SLIDES.length) % SLIDES.length; s[cur].classList.add('active'); d[cur].classList.add('active'); }
+    function slideGo(dir) { slideTo(cur + dir); resetTimer(); }
+    function startTimer() { timer = setInterval(() => slideTo(cur + 1), 5000); }
+    function resetTimer() { clearInterval(timer); startTimer(); }
+    document.getElementById('committee-grid').innerHTML = COMMITTEE.map(m => `<div class="committee-card"><img src="${m.photo}" alt="${m.name}" class="committee-photo"/><p class="committee-name">${m.name}</p><span class="committee-role">${m.role}</span><p class="committee-inst">${m.inst}</p></div>`).join('');
+    document.getElementById('dates-list').innerHTML = DATES.map(d => `<div class="date-item"><span style="font-size:1.25rem;flex-shrink:0">${d.icon}</span><div><p class="date-date">${d.date}</p><p class="date-event">${d.event}</p></div></div>`).join('');
+    document.getElementById('speakers-grid').innerHTML = SPEAKERS.map(s => `<div class="speaker-card"><img src="${s.photo}" alt="${s.name}" class="speaker-photo"/><div><p class="speaker-name">${s.name}</p><p class="speaker-inst">${s.inst}</p><p class="speaker-talk">&ldquo;${s.talk}&rdquo;</p></div></div>`).join('');
+    document.getElementById('workshops-grid').innerHTML = WORKSHOPS.map(w => `<div class="workshop-card"><h3 class="workshop-title">${w.title}</h3><p class="workshop-desc">${w.desc}</p><span class="badge-m">📅 ${w.date}</span><span class="badge-g">⏱ ${w.dur}</span></div>`).join('');
+    document.getElementById('topics-list').innerHTML = TOPICS.map(t => `<div class="topics-item"><span class="topics-bullet">▸</span><span>${t}</span></div>`).join('');
+    document.getElementById('specials-grid').innerHTML = SPECIALS.map(s => `<div class="special-card"><div class="special-icon">${s.icon}</div><h3 class="special-title">${s.title}</h3><p class="special-desc">${s.desc}</p></div>`).join('');
+    document.getElementById('tiers-grid').innerHTML = TIERS.map(t => `<div class="tier-card" style="border:2px solid ${t.color}"><div class="tier-icon">🏆</div><div class="tier-name" style="color:${t.color}">${t.tier} Sponsor</div><div class="tier-price">${t.price}</div>${t.benefits.map(b => `<div class="tier-benefit"><span style="color:${t.color};flex-shrink:0">✓</span><span>${b}</span></div>`).join('')}</div>`).join('');
+    document.getElementById('sponsors-grid').innerHTML = SPONSORS.map(s => `<div class="sponsor-item">${s}</div>`).join('');
+    document.getElementById('contact-info').innerHTML = CONTACTS.map(c => `<div class="contact-item"><span class="contact-icon">${c.icon}</span><div><p class="contact-label">${c.label}</p><p class="contact-value">${c.value}</p></div></div>`).join('');
+
+    // nav
+    const NAV_IDS = ['home', 'committee', 'important-dates', 'speakers', 'workshop', 'submission', 'special-session', 'registration', 'sponsorship', 'contact'];
+    function navTo(id) { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth' }); }
+    window.addEventListener('scroll', () => { let c = 'home'; for (const id of NAV_IDS) { const el = document.getElementById(id); if (el && window.scrollY >= el.offsetTop - 140) c = id; } document.querySelectorAll('.nav-links .icads-nav-link,.mobile-menu .icads-nav-link').forEach(b => { const m = (b.getAttribute('onclick') || '').match(/navTo\('([^']+)'\)/); if (m) b.classList.toggle('active', m[1] === c); }); }, { passive: true });
+    function toggleMenu() { const m = document.getElementById('mobile-menu'); const open = m.classList.toggle('open'); document.querySelector('.hamburger').textContent = open ? '✕' : '☰'; }
+    function closeMenu() { document.getElementById('mobile-menu').classList.remove('open'); document.querySelector('.hamburger').textContent = '☰'; }
+    window.addEventListener('scroll', () => { document.getElementById('btn-scroll-top').classList.toggle('show', window.scrollY > 300); }, { passive: true });
+
+    // stats counter
+    (function () { const el = document.getElementById('stats-strip'); let done = false; const obs = new IntersectionObserver(e => { if (e[0].isIntersecting && !done) { done = true; document.querySelectorAll('.stat-number').forEach(n => { const t = parseInt(n.dataset.target), s = n.dataset.suffix || ''; let v = 0, step = t / 80; const i = setInterval(() => { v += step; if (v >= t) { v = t; clearInterval(i); } n.textContent = Math.ceil(v) + s; }, 18); }); } }, { threshold: .3 }); obs.observe(el); })();
+
+    // scroll reveal
+    (function () { const obs = new IntersectionObserver(e => { for (const x of e) if (x.isIntersecting) { x.target.classList.add('revealed'); obs.unobserve(x.target); } }, { threshold: .07 }); document.querySelectorAll('.reveal').forEach(el => obs.observe(el)); })();
+
+    // auth
+    let currentUser = null;
+    function openAuth(tab) { document.getElementById('auth-modal').classList.add('open'); switchTab(tab || 'register'); }
+    function closeAuth() { document.getElementById('auth-modal').classList.remove('open'); document.getElementById('login-error').style.display = 'none'; document.getElementById('reg-error').style.display = 'none'; }
+    function switchTab(t) { document.getElementById('login-form').style.display = t === 'login' ? '' : 'none'; document.getElementById('register-form').style.display = t === 'register' ? '' : 'none'; document.getElementById('tab-login').classList.toggle('active', t === 'login'); document.getElementById('tab-register').classList.toggle('active', t === 'register'); }
+    function handleLogin(e) { e.preventDefault(); const email = document.getElementById('login-email').value.trim(), pw = document.getElementById('login-password').value, err = document.getElementById('login-error'), users = JSON.parse(localStorage.getItem('icads_users') || '[]'), u = users.find(x => x.email === email && x.password === pw); if (!u) { err.textContent = 'Invalid email or password.'; err.style.display = ''; return; } err.style.display = 'none'; currentUser = u; updateNavAuth(); closeAuth(); }
+    function handleRegister(e) { e.preventDefault(); const name = document.getElementById('reg-name').value.trim(), email = document.getElementById('reg-email').value.trim(), inst = document.getElementById('reg-inst').value.trim(), role = document.getElementById('reg-role').value, pw = document.getElementById('reg-password').value, confirm = document.getElementById('reg-confirm').value, err = document.getElementById('reg-error'); if (pw.length < 6) { err.textContent = 'Password must be at least 6 characters.'; err.style.display = ''; return; } if (pw !== confirm) { err.textContent = 'Passwords do not match.'; err.style.display = ''; return; } const users = JSON.parse(localStorage.getItem('icads_users') || '[]'); if (users.find(u => u.email === email)) { err.textContent = 'Account already exists.'; err.style.display = ''; return; } const u = { name, email, inst, role, password: pw }; users.push(u); localStorage.setItem('icads_users', JSON.stringify(users)); err.style.display = 'none'; currentUser = u; updateNavAuth(); closeAuth(); }
+    function handleLogout() { currentUser = null; updateNavAuth(); }
+    function updateNavAuth() { const a = document.getElementById('nav-auth'), m = document.getElementById('mobile-auth'); if (currentUser) { a.innerHTML = `<span class="nav-username">👤 ${currentUser.name}</span><button class="btn-logout" onclick="handleLogout()">Logout</button>`; m.innerHTML = `<span class="nav-username">👤 ${currentUser.name}</span><button class="btn-logout" onclick="handleLogout();closeMenu()">Logout</button>`; } else { a.innerHTML = '<button class="btn-register" onclick="openAuth(\'register\')">Register Now</button>'; m.innerHTML = '<button class="btn-gold" onclick="openAuth(\'register\');closeMenu()">Register Now</button>'; } }
+    document.getElementById('auth-modal').addEventListener('click', function (e) { if (e.target === this) closeAuth(); });
+    if (window.innerWidth >= 640) document.getElementById('inst-badge').style.display = '';
+    window.addEventListener('resize', () => { document.getElementById('inst-badge').style.display = window.innerWidth >= 640 ? '' : ' none'; });
+    buildSlides();
+  </script>
+</body>
+
+</html>
